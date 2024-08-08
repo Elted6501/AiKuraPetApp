@@ -40,14 +40,7 @@ function AppNavigation() {
           <Drawer.Screen name="Reviews" component={StackNavigationRev} />
           <Drawer.Screen name="Pets" component={StackNavigationPets} />
           <Drawer.Screen name="Pet Details" component={PetDetails} />
-          <Drawer.Screen name="Log Out"  component={HandleSignOut} options={
-            {
-              drawerLabel: "Log Out",
-              drawerLabelStyle: { 
-                color: 'red',
-              }
-            }
-          }/>
+          <Drawer.Screen name="Log Out" component={HandleSignOut} />
         </Drawer.Navigator>
       </NavigationContainer>
     )
