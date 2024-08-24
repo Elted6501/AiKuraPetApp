@@ -2,15 +2,15 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { initializeAuth, getReactNativePersistence } from "firebase/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import "dotenv/config";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCuo9Orvair3x-DQyTpg0VeeBbG4xq-emk",
-  authDomain: "aikurapet-2170d.firebaseapp.com",
-  projectId: "aikurapet-2170d",
-  storageBucket: "aikurapet-2170d.appspot.com",
-  messagingSenderId: "1048058522187",
-  appId: "1:1048058522187:web:ef09e9bd2c7e7e85a3fbce"
+  apikey: process.env.APIKEY,
+  authDomain: process.env.AUTHDOMAIN,
+  projectId: process.env.PROJECTID,
+  storageBucket: process.env.STORAGEBUCKET,
+  messagingSenderId: process.env.MESSAGINGSENDERID,
+  appId: process.env.APPID,
 };
 
 const app = initializeApp(firebaseConfig);
