@@ -28,7 +28,7 @@ function HomeLog({ navigation }) {
 
             <View style={styles.header}>
 
-              <Image source={{ uri: pet.image }} style={styles.profileImage} />
+              <Image source={ { uri: pet.image !== null ? pet.image : 'https://res.cloudinary.com/dglqsxwon/image/upload/v1722710366/AiKuraPet/a6am5bef36yq3s13i5rv.png'  }} style={styles.profileImage} />
 
               <View style={styles.info}>
                 <Text style={styles.nameDog}>{pet.name}</Text>

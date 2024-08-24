@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function useDogBreeds() {
-    const [breeds, setBreeds] = useState([]);
+    const [dogBreeds, setDogBreeds] = useState([]);
 
     useEffect(() => {
         const fetchBreeds = async () => {
@@ -9,7 +9,7 @@ export default function useDogBreeds() {
                 const response = await fetch('https://dog.ceo/api/breeds/list/all');
                 const data = await response.json();
                 const breedList = Object.keys(data.message);
-                setBreeds(breedList);
+                setDogBreeds(breedList);
             } catch (err) {
                 console.error(err);
             }
@@ -18,5 +18,5 @@ export default function useDogBreeds() {
         fetchBreeds();
     }, []);
 
-    return { breeds };
+    return { dogBreeds };
 }

@@ -5,19 +5,15 @@ import { signOut } from "firebase/auth";
 import { auth } from "../config/firebase";
 import StackNavigationPets from "../components/StackNavigationPets";
 import StackNavigationRev from "../components/StackNavigationRev";
-import { Text } from "react-native";
-
 import Home from "../screens/Home";
 import AboutUs from "../screens/AboutUs";
 import PetDetails from "../screens/PetDetails";
 import LogInApp from "../screens/LogInApp";
 import SignupApp from "../screens/SignupApp";
 import useAuth from "../hooks/useAuth";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
-
 
 const HandleSignOut = async () => {
   try {
@@ -34,7 +30,7 @@ function AppNavigation() {
   if (user) {
     return (
       <NavigationContainer>
-        <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Navigator initialRouteName="Pets">
           <Drawer.Screen name="Get product" component={Home} />
           <Drawer.Screen name="About us" component={AboutUs} />
           <Drawer.Screen name="Reviews" component={StackNavigationRev} />

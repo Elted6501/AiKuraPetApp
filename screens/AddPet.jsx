@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import * as Location from 'expo-location';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ScrollView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
@@ -13,7 +13,7 @@ import ImageViewer from '../components/ImageViewer';
 
 function AddPet() {
     const { user } = useAuth();
-    const { breeds } = useDogBreeds();
+    const { dogBreeds } = useDogBreeds();
     const { catBreeds } = useCatBreeds();
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
@@ -26,6 +26,10 @@ function AddPet() {
     const [address, setAddress] = useState('');
     const [idcollar, setIdcollar] = useState('');
     const [selectedImage, setSelectedImage] = useState(null);
+
+    const petsBreeds = {dogs: dogBreeds, cats: catBreeds};
+
+    console.log(petsBreeds);
 
     const submitHandler = async () => {
         if (!name || !specie || !breed || !age || !weight || !address || !idcollar || !selectedImage) {
@@ -101,10 +105,6 @@ function AddPet() {
 
     };
 
-    
-    
-    console.log(location)
-
     return (
         <ScrollView contentContainerStyle={styles.scrollContainer}>
             <View style={styles.card}>
@@ -136,6 +136,7 @@ function AddPet() {
                         <Picker
                             selectedValue={specie}
                             onValueChange={setSpecie}
+                            on
                             mode="dropdown"
                             style={styles.inputPicker}
                             itemStyle={{ fontSize: 16 }}
@@ -153,11 +154,11 @@ function AddPet() {
                             itemStyle={{ fontSize: 16 }}
                         >
                             {specie === 'Dog' ? (
-                                breeds.map(breed => (
+                                petsBreeds.dogs.map(breed => (
                                     <Picker.Item key={breed} label={breed} value={breed} />
                                 ))) : (
 
-                                catBreeds.map(breed => (
+                                petsBreeds.cats.map(breed => (
                                     <Picker.Item key={breed} label={breed} value={breed} />
                                 ))
                             )}
@@ -173,7 +174,9 @@ function AddPet() {
                     />
 
 
-                    {location !== null ?? <MapView style={styles.map} initialRegion={{ latitude: location.latitude, longitude: location.longitude, latitudeDelta: 0.1, longitudeDelta: 0.1, }}/>}
+                     <MapView style={styles.map} 
+                     initialRegion={{ latitude: location.latitude, longitude: location.longitude, latitudeDelta: 0.1, longitudeDelta: 0.1, }}
+                     />
                     
                     <TextInput
                         style={styles.input}

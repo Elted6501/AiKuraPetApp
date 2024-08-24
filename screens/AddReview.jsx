@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { AirbnbRating } from 'react-native-ratings';
 
 function AddReview() {
